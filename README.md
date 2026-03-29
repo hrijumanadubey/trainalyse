@@ -1,3 +1,3 @@
 # Trainalyze
 
-Gym routine tracking app
+Gym routine tracking app lol.
