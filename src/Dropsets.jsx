@@ -2,15 +2,16 @@ import React from "react";
 import { useState } from "react";
 
 function Dropsets({ exerciseType }) {
-  const [weight, setWeight] = useState("");
-  const [reps, setReps] = useState("");
-  const [minutes, setMinutes] = useState("");
-  const [seconds, setSeconds] = useState("");
+  const [weight, setWeight] = useState(""); //state for setting weight with which you did te exercise
+  const [reps, setReps] = useState(""); //state for setting reps you did in the exercise
+  const [minutes, setMinutes] = useState(""); //state for entering minutes for which you did the exercise like plank for eg
+  const [seconds, setSeconds] = useState(""); //state for entering seconds for which you did the exercise
 
-  const id = React.useId();
+  const id = React.useId(); // for id purposes only
 
   return (
     <div>
+      {/*this is the logic for the different exercise types */}
       {exerciseType === "weightsAndReps" && (
         <>
           <input
