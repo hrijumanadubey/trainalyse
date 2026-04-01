@@ -1,15 +1,19 @@
 import React from "react";
-import Set from "./Set";
-import { useNavigate } from "react-router-dom";
+import Exercise from "./Exercise";
 
 function Day() {
-  const navigate = useNavigate();
-
   const [date, setDate] = React.useState(""); //state for setting date
   const [edit, setEdit] = React.useState(false); //state for editing date
   const [day, setDay] = React.useState(""); //state for naming the day eg.chest day
-  const [exerciseName, setExerciseName] = React.useState(""); //state for setting exercise name
-  const [exerciseType, setExerciseType] = React.useState(""); //state for setting the type of exercise eg.weights and reps,duration or assisted etc
+  const [exerciseArray, setExerciseArray] = React.useState([]);
+  const id = React.useId();
+
+  function handleAddExercise() {
+    setExerciseArray([
+      ...exerciseArray,
+      { id: id + "-" + exerciseArray.length },
+    ]);
+  }
 
   return (
     <>
@@ -51,14 +55,13 @@ function Day() {
         onChange={(e) => setDay(e.target.value)}
       />
       <br />
-      <input
-        type="text"
-        placeholder="Enter exercise"
-        value={exerciseName}
-        onChange={(e) => setExerciseName(e.target.value)}
-      />
+      <Exercise number={1} />
       <br />
-      <Set exerciseType={exerciseType} setExerciseType={setExerciseType} />
+      {exerciseArray.map((exercise, index) => (
+        <Exercise key={exercise.id} number={index + 2} />
+      ))}
+      <br />
+      <button onClick={handleAddExercise}>+ for Exercises</button>
     </>
   );
 }
