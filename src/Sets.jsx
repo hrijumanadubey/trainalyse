@@ -3,7 +3,7 @@ import Dropsets from "./Dropsets";
 import { useState } from "react";
 
 function Sets({ num }) {
-  const [exerciseType, setExerciseType] = useState(""); // state for selecting the type of exercise
+  const [exerciseType, setExerciseType] = useState("weightsAndReps"); // state for selecting the type of exercise
   const [dropSets, setDropSets] = useState([]); //state of array for storing drop sets
   const id = React.useId();
 
@@ -42,7 +42,6 @@ function Sets({ num }) {
       <br />
       {/* this is the drop set part rendered which will be shown initially on the first render */}
       <Dropsets exerciseType={exerciseType} />
-      <br />
       {/*this is the part where dropsets are rendered by mapping to the dropsets array */}
       {dropSets.map((set, index) => (
         <Dropsets key={set.id} exerciseType={exerciseType} />
