@@ -54,9 +54,7 @@ function Day() {
         />
       )}
       <br />
-      {/*this is a redundant bit where there are 2 input tags for entering
-       day and exercise name, in future i can make it a reusable component but for now
-      this redundancy exists. */}
+      {/*this is the part where the user enters the name for the day for eg. chest and tricep day */}
       <input
         type="text"
         placeholder="Enter day"

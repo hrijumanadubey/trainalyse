@@ -3,6 +3,7 @@ import { useState } from "react";
 import Sets from "./Sets";
 
 function Exercise({ number }) {
+  const [exerciseType, setExerciseType] = useState("weightsAndReps"); // state for selecting the type of exercise
   const [exerciseName, setExerciseName] = useState(""); // state for entering the name of the exercise
   const [sets, setSets] = useState([]); // state of array for storing sets
   const id = React.useId();
@@ -31,11 +32,26 @@ function Exercise({ number }) {
         onChange={(e) => setExerciseName(e.target.value)}
       />
       <br />
+      {/*this is the section where the user selects the type of exercise */}
+      <select
+        value={exerciseType}
+        id={id}
+        onChange={(e) => {
+          setExerciseType(e.target.value);
+        }}
+      >
+        <option value="" disabled>
+          Select a Type
+        </option>
+        <option value="weightsAndReps">Weights and Reps</option>
+        <option value="duration">Duration</option>
+      </select>
+      <br />
       {/* this is the first set rendered initially on the first render */}
-      <Sets num={1} />
+      <Sets num={1} exerciseType={exerciseType} />
       <br />
       {sets.map((set, index) => (
-        <Sets key={set.id} num={index + 2} />
+        <Sets key={set.id} num={index + 2} exerciseType={exerciseType} />
       ))}
       <br />
       {/* this is the button to add a new set */}
