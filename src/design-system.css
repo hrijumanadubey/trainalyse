@@ -1,0 +1,11 @@
+:root {
+    /* Colors */
+    --color-beige: #e8dcc8;
+    --color-white: #ffffff;
+    --color-black: #000000;
+
+    /* Semantic tokens */
+    --bg-page: var(--color-beige);
+    --bg-surface: var(--color-white);
+    --text-primary: var(--color-black);
+}
