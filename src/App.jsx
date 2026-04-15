@@ -9,6 +9,9 @@ function App() {
   const handleClick = () => {
     navigate("/Day");
   };
+  const handleDayClick = () => {
+    navigate("/Day");
+  };
   return (
     <>
       <div>Trainalyse</div>
@@ -19,7 +22,7 @@ function App() {
       <hr></hr>
       <ul>
         {days.map((day) => (
-          <button>
+          <button onClick={handleDayClick}>
             <Displayedday date={day.date} title={day.title} />
           </button>
         ))}
@@ -28,6 +31,7 @@ function App() {
       <button onClick={handleClick} className="main">
         +
       </button>
+
       <hr />
 
       <nav>
