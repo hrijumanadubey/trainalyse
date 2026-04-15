@@ -9,9 +9,6 @@ function App() {
   const handleClick = () => {
     navigate("/Day");
   };
-  const handleDayClick = () => {
-    navigate("/Day");
-  };
   return (
     <>
       <div>Trainalyse</div>
@@ -21,8 +18,12 @@ function App() {
 
       <hr></hr>
       <ul>
+        {/*we import all the days from the dummy data in json and and then we take each day and then while navigating to the
+          day component we pass an object as well which has state as key and {day:day} as its value where day is assigned
+          the value for day and then we call that component
+          with the props of date (of the day) and title (of the day)*/}
         {days.map((day) => (
-          <button onClick={handleDayClick}>
+          <button onClick={() => navigate("/Day", { state: { day } })}>
             <Displayedday date={day.date} title={day.title} />
           </button>
         ))}

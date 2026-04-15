@@ -1,35 +1,55 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import Exercise from "./Exercise";
 
 function Day() {
-  const [date, setDate] = React.useState(""); //state for setting date
-  const [edit, setEdit] = React.useState(false); //state for editing date
-  const [day, setDay] = React.useState(""); //state for naming the day eg.chest day
-  const [exerciseArray, setExerciseArray] = React.useState([]); //state of array for storing exercises
+  {
+    /*now we come here and catch the note passed by navigate and catch that note by using useLocation and store
+    it in a variable called location*/
+  }
+  const location = useLocation();
+  const passedDay = location.state?.day; // the day data passed from App.jsx (or undefined if none)
   const id = React.useId();
+
+  const [date, setDate] = React.useState(passedDay?.date ?? ""); // pre-fill date if data was passed
+  const [edit, setEdit] = React.useState(false); //state for editing date
+  const [day, setDay] = React.useState(passedDay?.title ?? ""); // pre-fill title if data was passed
+  //this below code also makes sure that while mounting there is one exercise component rendered already
+  const [exerciseArray, setExerciseArray] = React.useState(
+    passedDay?.exercises ?? [
+      {
+        id: id + "-0",
+        exerciseName: "",
+        exerciseType: "weightsAndReps",
+        sets: [],
+      },
+    ], // pre-fill exercises if data was passed, otherwise start with one default
+  );
 
   // function to add a new exercise to the array
   function handleAddExercise() {
     setExerciseArray([
       ...exerciseArray,
-      { id: id + "-" + exerciseArray.length },
+      {
+        id: id + "-" + exerciseArray.length,
+        exerciseName: "",
+        exerciseType: "weightsAndReps",
+        sets: [],
+      },
     ]);
   }
 
   // function to remove the last exercise from the array
   function handleMinus() {
     if (exerciseArray.length > 0) {
-      const updatedExercises = exerciseArray.slice(0, -1);
+      const updatedExercises = exerciseArray.slice(0, -1); //0th to last element but the lst element is excluded
       setExerciseArray(updatedExercises);
     }
   }
 
   return (
     <>
-      {/*thi section is for displaying the date and edit button,logic is if date
-      is entered and edit button is not pressed then the date and day is shown
-      but if edit button is pressed then we see the usual input tag for the
-      date.*/}
+      {/*this section is for displaying the date and edit button */}
       {date && !edit ? (
         <>
           <p>
@@ -54,7 +74,7 @@ function Day() {
         />
       )}
       <br />
-      {/*this is the part where the user enters the name for the day for eg. chest and tricep day */}
+      {/*this is the part where the user enters the name for the day */}
       <input
         type="text"
         placeholder="Enter day"
@@ -62,17 +82,15 @@ function Day() {
         onChange={(e) => setDay(e.target.value)}
       />
       <br />
-      <Exercise number={1} />
-      <br />
-      {/* this is the map function to render each exercise in the array */}
+      {/* all exercises come from the array now, each gets its data passed as initialData */}
       {exerciseArray.map((exercise, index) => (
-        <Exercise key={exercise.id} number={index + 2} />
+        <Exercise key={exercise.id} number={index + 1} initialData={exercise} />
       ))}
       <br />
       {/* this is the button to add a new exercise */}
       <button onClick={handleAddExercise}>+ for Exercises</button>
       {/* this is the button to remove the last exercise, only shown if there are exercises */}
-      {exerciseArray.length > 0 && (
+      {exerciseArray.length > 1 && (
         <button onClick={handleMinus}>- for Exercises</button>
       )}
     </>

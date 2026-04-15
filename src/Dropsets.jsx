@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
 
-function Dropsets({ exerciseType }) {
-  const [weight, setWeight] = useState(""); //state for setting weight with which you did te exercise
-  const [reps, setReps] = useState(""); //state for setting reps you did in the exercise
-  const [minutes, setMinutes] = useState(""); //state for entering minutes for which you did the exercise like plank for eg
-  const [seconds, setSeconds] = useState(""); //state for entering seconds for which you did the exercise
+function Dropsets({ exerciseType, initialData }) {
+  const [weight, setWeight] = useState(initialData?.weight ?? ""); // pre-fill weight if data was passed
+  const [reps, setReps] = useState(initialData?.reps ?? ""); // pre-fill reps if data was passed
+  const [minutes, setMinutes] = useState(initialData?.minutes ?? ""); // pre-fill minutes if data was passed
+  const [seconds, setSeconds] = useState(initialData?.seconds ?? ""); // pre-fill seconds if data was passed
 
   const id = React.useId(); // for id purposes only
 

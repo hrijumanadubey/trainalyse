@@ -2,13 +2,15 @@ import React from "react";
 import Dropsets from "./Dropsets";
 import { useState } from "react";
 
-function Sets({ num, exerciseType }) {
-  const [dropSets, setDropSets] = useState([]); //state of array for storing drop sets
+function Sets({ num, exerciseType, initialData }) {
   const id = React.useId();
+  const [dropSets, setDropSets] = useState(
+    initialData?.dropsets?.length ? initialData.dropsets : [{ id: id + "-0", weight: "", reps: "", minutes: "", seconds: "" }] // pre-fill dropsets if data was passed, otherwise start with one default
+  );
 
   // function to handle adding a new drop set
   function handleDropSets() {
-    const updatedDropSets = [...dropSets, { id: id + "-" + dropSets.length }];
+    const updatedDropSets = [...dropSets, { id: id + "-" + dropSets.length, weight: "", reps: "", minutes: "", seconds: "" }];
     setDropSets(updatedDropSets);
   }
 
@@ -23,19 +25,16 @@ function Sets({ num, exerciseType }) {
   return (
     <>
       <p>Set {num}:</p>
-
       <br />
-      {/* this is the drop set part rendered which will be shown initially on the first render */}
-      <Dropsets exerciseType={exerciseType} />
-      {/*this is the part where dropsets are rendered by mapping to the dropsets array */}
-      {dropSets.map((set) => (
-        <Dropsets key={set.id} exerciseType={exerciseType} />
+      {/* all dropsets come from the array now, each gets its data passed as initialData */}
+      {dropSets.map((dropset) => (
+        <Dropsets key={dropset.id} exerciseType={exerciseType} initialData={dropset} />
       ))}
       <br />
       {/* this is the button to add a new drop set */}
       <button onClick={handleDropSets}>+ for drop sets</button>
       {/* this is the button to remove a drop set, only shown if there are drop sets */}
-      {dropSets.length > 0 && (
+      {dropSets.length > 1 && (
         <button onClick={handleMinus}>- for drop sets</button>
       )}
     </>

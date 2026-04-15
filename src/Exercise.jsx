@@ -2,15 +2,17 @@ import React from "react";
 import { useState } from "react";
 import Sets from "./Sets";
 
-function Exercise({ number }) {
-  const [exerciseType, setExerciseType] = useState("weightsAndReps"); // state for selecting the type of exercise
-  const [exerciseName, setExerciseName] = useState(""); // state for entering the name of the exercise
-  const [sets, setSets] = useState([]); // state of array for storing sets
+function Exercise({ number, initialData }) {
   const id = React.useId();
+  const [exerciseType, setExerciseType] = useState(initialData?.exerciseType ?? "weightsAndReps"); // pre-fill type if data was passed
+  const [exerciseName, setExerciseName] = useState(initialData?.exerciseName ?? ""); // pre-fill name if data was passed
+  const [sets, setSets] = useState(
+    initialData?.sets?.length ? initialData.sets : [{ id: id + "-0", dropsets: [] }] // pre-fill sets if data was passed, otherwise start with one default
+  );
 
   // function to add a set to the array of sets
   function handleAddSets() {
-    setSets([...sets, { id: id + "-" + sets.length }]);
+    setSets([...sets, { id: id + "-" + sets.length, dropsets: [] }]);
   }
 
   // function to remove a set from the array of sets
@@ -47,17 +49,15 @@ function Exercise({ number }) {
         <option value="duration">Duration</option>
       </select>
       <br />
-      {/* this is the first set rendered initially on the first render */}
-      <Sets num={1} exerciseType={exerciseType} />
-      <br />
+      {/* all sets come from the array now, each gets its data passed as initialData */}
       {sets.map((set, index) => (
-        <Sets key={set.id} num={index + 2} exerciseType={exerciseType} />
+        <Sets key={set.id} num={index + 1} exerciseType={exerciseType} initialData={set} />
       ))}
       <br />
       {/* this is the button to add a new set */}
       <button onClick={handleAddSets}>+ for Sets</button>
       {/* this is the button to remove a set, only shown if there are sets */}
-      {sets.length > 0 && <button onClick={handleMinus}>- for Sets</button>}
+      {sets.length > 1 && <button onClick={handleMinus}>- for Sets</button>}
     </>
   );
 }
