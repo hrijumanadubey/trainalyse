@@ -11,44 +11,40 @@ function App() {
   };
   return (
     <>
-      <div>Trainalyse</div>
-      <button>Date</button>
-      <button>Title</button>
-      <button>settings</button>
+      <header className="header">
+        <div className="header-logo" />
+        <span className="header-title">Trainalyse</span>
+        <div className="header-actions">
+          <div className="header-bar" />
+          <div className="header-bar" />
+          <div className="header-dots">
+            <div className="header-dot" />
+            <div className="header-dot" />
+            <div className="header-dot" />
+          </div>
+        </div>
+      </header>
 
-      <hr></hr>
-      <ul>
-        {/*we import all the days from the dummy data in json and and then we take each day and then while navigating to the
-          day component we pass an object as well which has state as key and {day:day} as its value where day is assigned
-          the value for day and then we call that component
-          with the props of date (of the day) and title (of the day)*/}
+      <hr className="divider" />
+
+      <ul className="day-list">
         {days.map((day) => (
-          <button onClick={() => navigate("/Day", { state: { day } })}>
-            <Displayedday date={day.date} title={day.title} />
-          </button>
+          <li key={day.id}>
+            <button className="day-card" onClick={() => navigate("/Day", { state: { day } })}>
+              <Displayedday date={day.date} title={day.title} />
+            </button>
+          </li>
         ))}
       </ul>
 
-      <button onClick={handleClick} className="main">
-        +
-      </button>
+      <button onClick={handleClick} className="main">+</button>
 
-      <hr />
-
-      <nav>
-        <ul class="nav-links">
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">graphs</a>
-          </li>
-          <li>
-            <a href="#">improve</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
+      <nav className="nav-bar">
+        <ul className="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Graphs</a></li>
+          <li><a href="#">Improve</a></li>
+          <li><a href="#">Contact</a></li>
         </ul>
       </nav>
     </>

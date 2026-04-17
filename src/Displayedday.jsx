@@ -2,11 +2,7 @@ import React from "react";
 
 function Displayedday({ date, title }) {
   return (
-    <ul className="displayedday">
-      <div>
-        {date} - {title}
-      </div>
-    </ul>
+    <span>{date} - {title}</span>
   );
 }
 

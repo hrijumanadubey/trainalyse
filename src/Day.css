@@ -1,0 +1,164 @@
+/* Day page wrapper */
+.day-page {
+    padding: 20px 19px;
+    padding-bottom: 40px;
+}
+
+/* Date row — date input + edit button side by side */
+.date-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.date-input {
+    flex: 1;
+    height: 43px;
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    border: none;
+    padding: 0 12px;
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    box-sizing: border-box;
+}
+
+.date-display {
+    flex: 1;
+    height: 43px;
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: 0 12px;
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.edit-button {
+    height: 43px;
+    padding: 0 16px;
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+}
+
+/* Day name input */
+.day-name-input {
+    width: 100%;
+    height: 43px;
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    border: none;
+    padding: 0 12px;
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+
+/* Exercise container */
+.exercise-container {
+    background-color: var(--bg-page);
+    border-radius: var(--radius-exercise);
+    box-shadow: var(--shadow-exercise);
+    outline: var(--border-primary);
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.exercise-label {
+    font-family: var(--font-family);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-xs);
+    letter-spacing: var(--letter-spacing);
+    color: var(--text-primary);
+    margin: 0 0 16px 0;
+}
+
+.exercise-input {
+    width: 100%;
+    height: 41px;
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    border: none;
+    padding: 0 12px;
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    box-sizing: border-box;
+    margin-bottom: 8px;
+}
+
+/* Set container */
+.set-container {
+    background-color: var(--bg-page);
+    border-radius: var(--radius-set);
+    border: var(--border-primary);
+    box-shadow: var(--shadow-set);
+    padding: 16px;
+    margin-bottom: 8px;
+}
+
+.set-label {
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-sm);
+    letter-spacing: var(--letter-spacing);
+    color: var(--text-primary);
+    margin: 0 0 12px 0;
+}
+
+/* Dropset inputs — side by side */
+.dropset-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.dropset-input {
+    flex: 1;
+    min-width: 0;
+    height: 41px;
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    border: none;
+    padding: 0 12px;
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    box-sizing: border-box;
+}
+
+/* Action buttons (+ for Sets, + for Drop Sets, + for Exercise) */
+.action-button {
+    height: 43px;
+    padding: 0 16px;
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-md);
+    color: var(--text-primary);
+    margin-top: 8px;
+    margin-right: 8px;
+}

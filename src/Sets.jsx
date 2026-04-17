@@ -23,21 +23,21 @@ function Sets({ num, exerciseType, initialData }) {
   }
 
   return (
-    <>
-      <p>Set {num}:</p>
-      <br />
+    <div className="set-container">
+      <p className="set-label">Set {num}</p>
+
       {/* all dropsets come from the array now, each gets its data passed as initialData */}
       {dropSets.map((dropset) => (
         <Dropsets key={dropset.id} exerciseType={exerciseType} initialData={dropset} />
       ))}
-      <br />
+
       {/* this is the button to add a new drop set */}
-      <button onClick={handleDropSets}>+ for drop sets</button>
-      {/* this is the button to remove a drop set, only shown if there are drop sets */}
+      <button className="action-button" onClick={handleDropSets}>+ for Drop Sets</button>
+      {/* this is the button to remove a drop set, only shown if there are more than one */}
       {dropSets.length > 1 && (
-        <button onClick={handleMinus}>- for drop sets</button>
+        <button className="action-button" onClick={handleMinus}>- for Drop Sets</button>
       )}
-    </>
+    </div>
   );
 }
 

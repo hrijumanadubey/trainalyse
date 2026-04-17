@@ -7,58 +7,57 @@ function Dropsets({ exerciseType, initialData }) {
   const [minutes, setMinutes] = useState(initialData?.minutes ?? ""); // pre-fill minutes if data was passed
   const [seconds, setSeconds] = useState(initialData?.seconds ?? ""); // pre-fill seconds if data was passed
 
-  const id = React.useId(); // for id purposes only
+  const id = React.useId();
 
   return (
     <div>
       {/*this is the logic for the different exercise types */}
       {exerciseType === "weightsAndReps" && (
-        <>
+        <div className="dropset-row">
           <input
+            className="dropset-input"
             type="number"
-            placeholder="enter Weight"
+            placeholder="Weight"
             id={id + "-weight"}
             value={weight}
-            onChange={(e) => {
-              setWeight(e.target.value);
-            }}
+            onChange={(e) => setWeight(e.target.value)}
           />
           <input
+            className="dropset-input"
             type="number"
-            placeholder="enter Reps"
+            placeholder="Reps"
             id={id + "-reps"}
             value={reps}
-            onChange={(e) => {
-              setReps(e.target.value);
-            }}
+            onChange={(e) => setReps(e.target.value)}
           />
-        </>
+        </div>
       )}
       {exerciseType === "duration" && (
         <>
-          <input
-            type="range"
-            min="0"
-            max="100"
-            id={id + "-minutes"}
-            value={minutes}
-            onChange={(e) => {
-              setMinutes(e.target.value);
-            }}
-          />
-          <label>{minutes} : Minutes</label>
-          <br />
-          <input
-            type="range"
-            min="0"
-            max="59"
-            id={id + "-seconds"}
-            value={seconds}
-            onChange={(e) => {
-              setSeconds(e.target.value);
-            }}
-          />
-          <label>{seconds} : Seconds</label>
+          <div className="dropset-row">
+            <input
+              className="dropset-input"
+              type="range"
+              min="0"
+              max="100"
+              id={id + "-minutes"}
+              value={minutes}
+              onChange={(e) => setMinutes(e.target.value)}
+            />
+            <label>{minutes} : Minutes</label>
+          </div>
+          <div className="dropset-row">
+            <input
+              className="dropset-input"
+              type="range"
+              min="0"
+              max="59"
+              id={id + "-seconds"}
+              value={seconds}
+              onChange={(e) => setSeconds(e.target.value)}
+            />
+            <label>{seconds} : Seconds</label>
+          </div>
         </>
       )}
     </div>

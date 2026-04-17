@@ -1,11 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
 :root {
     /* Colors */
-    --color-beige: #e8dcc8;
     --color-white: #ffffff;
     --color-black: #000000;
+    --color-grey-light: #dddddd;
+    --color-grey-bg: #e5e5e5;
+    --color-shadow: #00000033;
 
     /* Semantic tokens */
-    --bg-page: var(--color-beige);
+    --bg-page: var(--color-grey-bg);
     --bg-surface: var(--color-white);
     --text-primary: var(--color-black);
+
+    /* Typography */
+    --font-family: "Russo One", system-ui, sans-serif;
+    --font-size-xl: 44px;
+    --font-size-lg: 24px;
+    --font-size-md: 16px;
+    --font-size-sm: 16px;
+    --line-height-xl: 54px;
+    --line-height-lg: 30px;
+    --line-height-md: 20px;
+    --line-height-sm: 16px;
+    --line-height-xs: 12px;
+    --letter-spacing: 0.03em;
+
+    /* Border radius */
+    --radius-pill: calc(infinity * 1px);
+    --radius-card: 4px;
+    --radius-exercise: 8px;
+    --radius-set: 12px;
+
+    /* Borders */
+    --border-primary: 1px solid var(--color-black);
+
+    /* Shadows */
+    --shadow-card: var(--color-shadow) 0px 2px 3px;
+    --shadow-button: var(--color-shadow) 2px 2px 3px;
+    --shadow-exercise: var(--color-shadow) 2px 2px 6px 4px;
+    --shadow-set: var(--color-shadow) 4px 4px 6px 4px;
 }

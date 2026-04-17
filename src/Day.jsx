@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import Exercise from "./Exercise";
+import "./Day.css";
 
 function Day() {
   {
@@ -23,7 +24,7 @@ function Day() {
         exerciseType: "weightsAndReps",
         sets: [],
       },
-    ], // pre-fill exercises if data was passed, otherwise start with one default
+    ] // pre-fill exercises if data was passed, otherwise start with one default
   );
 
   // function to add a new exercise to the array
@@ -42,58 +43,62 @@ function Day() {
   // function to remove the last exercise from the array
   function handleMinus() {
     if (exerciseArray.length > 0) {
-      const updatedExercises = exerciseArray.slice(0, -1); //0th to last element but the lst element is excluded
+      const updatedExercises = exerciseArray.slice(0, -1);
       setExerciseArray(updatedExercises);
     }
   }
 
   return (
-    <>
+    <div className="day-page">
       {/*this section is for displaying the date and edit button */}
-      {date && !edit ? (
-        <>
-          <p>
-            {new Date(date).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-              weekday: "long",
-            })}
-          </p>
-          <button onClick={() => setEdit(true)}>Edit</button>
-        </>
-      ) : (
-        <input
-          type="date"
-          placeholder="Enter date"
-          value={date}
-          onChange={(e) => {
-            setDate(e.target.value);
-            setEdit(false);
-          }}
-        />
-      )}
-      <br />
+      <div className="date-row">
+        {date && !edit ? (
+          <>
+            <p className="date-display">
+              {new Date(date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                weekday: "long",
+              })}
+            </p>
+            <button className="edit-button" onClick={() => setEdit(true)}>Edit</button>
+          </>
+        ) : (
+          <input
+            className="date-input"
+            type="date"
+            placeholder="Enter date"
+            value={date}
+            onChange={(e) => {
+              setDate(e.target.value);
+              setEdit(false);
+            }}
+          />
+        )}
+      </div>
+
       {/*this is the part where the user enters the name for the day */}
       <input
+        className="day-name-input"
         type="text"
         placeholder="Enter day"
         value={day}
         onChange={(e) => setDay(e.target.value)}
       />
-      <br />
+
       {/* all exercises come from the array now, each gets its data passed as initialData */}
       {exerciseArray.map((exercise, index) => (
         <Exercise key={exercise.id} number={index + 1} initialData={exercise} />
       ))}
-      <br />
+
       {/* this is the button to add a new exercise */}
-      <button onClick={handleAddExercise}>+ for Exercises</button>
-      {/* this is the button to remove the last exercise, only shown if there are exercises */}
+      <button className="action-button" onClick={handleAddExercise}>+ for Exercise</button>
+      {/* this is the button to remove the last exercise, only shown if there are more than one */}
       {exerciseArray.length > 1 && (
-        <button onClick={handleMinus}>- for Exercises</button>
+        <button className="action-button" onClick={handleMinus}>- for Exercise</button>
       )}
-    </>
+    </div>
   );
 }
 

@@ -24,41 +24,41 @@ function Exercise({ number, initialData }) {
   }
 
   return (
-    <>
-      <h3>Exercise {number}</h3>
+    <div className="exercise-container">
+      <p className="exercise-label">Exercise {number}</p>
+
       {/* this is the input field for entering the name of the exercise */}
       <input
+        className="exercise-input"
         type="text"
         id={id + "-exerciseName"}
+        placeholder="Exercise name"
         value={exerciseName}
         onChange={(e) => setExerciseName(e.target.value)}
       />
-      <br />
+
       {/*this is the section where the user selects the type of exercise */}
       <select
+        className="exercise-input"
         value={exerciseType}
         id={id}
-        onChange={(e) => {
-          setExerciseType(e.target.value);
-        }}
+        onChange={(e) => setExerciseType(e.target.value)}
       >
-        <option value="" disabled>
-          Select a Type
-        </option>
+        <option value="" disabled>Select a Type</option>
         <option value="weightsAndReps">Weights and Reps</option>
         <option value="duration">Duration</option>
       </select>
-      <br />
+
       {/* all sets come from the array now, each gets its data passed as initialData */}
       {sets.map((set, index) => (
         <Sets key={set.id} num={index + 1} exerciseType={exerciseType} initialData={set} />
       ))}
-      <br />
+
       {/* this is the button to add a new set */}
-      <button onClick={handleAddSets}>+ for Sets</button>
-      {/* this is the button to remove a set, only shown if there are sets */}
-      {sets.length > 1 && <button onClick={handleMinus}>- for Sets</button>}
-    </>
+      <button className="action-button" onClick={handleAddSets}>+ for Sets</button>
+      {/* this is the button to remove a set, only shown if there are more than one */}
+      {sets.length > 1 && <button className="action-button" onClick={handleMinus}>- for Sets</button>}
+    </div>
   );
 }
 
