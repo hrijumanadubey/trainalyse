@@ -61,6 +61,39 @@ function Dropsets({ exerciseType, initialData }) {
           <label>{seconds} : Seconds</label>
         </>
       )}
+      {exerciseType === "bodyWeight" && (
+        <input
+          type="number"
+          placeholder="enter Reps"
+          id={id + "-reps"}
+          value={reps}
+          onChange={(e) => {
+            setReps(e.target.value);
+          }}
+        />
+      )}
+      {exerciseType === "assisted" && (
+        <>
+          <input
+            type="number"
+            placeholder="enter Assisted Weight"
+            id={id + "-weight"}
+            value={weight}
+            onChange={(e) => {
+              setWeight(e.target.value);
+            }}
+          />
+          <input
+            type="number"
+            placeholder="enter Reps"
+            id={id + "-reps"}
+            value={reps}
+            onChange={(e) => {
+              setReps(e.target.value);
+            }}
+          />
+        </>
+      )}
     </div>
   );
 }

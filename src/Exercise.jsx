@@ -4,10 +4,16 @@ import Sets from "./Sets";
 
 function Exercise({ number, initialData }) {
   const id = React.useId();
-  const [exerciseType, setExerciseType] = useState(initialData?.exerciseType ?? "weightsAndReps"); // pre-fill type if data was passed
-  const [exerciseName, setExerciseName] = useState(initialData?.exerciseName ?? ""); // pre-fill name if data was passed
+  const [exerciseType, setExerciseType] = useState(
+    initialData?.exerciseType ?? "weightsAndReps",
+  ); // pre-fill type if data was passed
+  const [exerciseName, setExerciseName] = useState(
+    initialData?.exerciseName ?? "",
+  ); // pre-fill name if data was passed
   const [sets, setSets] = useState(
-    initialData?.sets?.length ? initialData.sets : [{ id: id + "-0", dropsets: [] }] // pre-fill sets if data was passed, otherwise start with one default
+    initialData?.sets?.length
+      ? initialData.sets
+      : [{ id: id + "-0", dropsets: [] }], // pre-fill sets if data was passed, otherwise start with one default
   );
 
   // function to add a set to the array of sets
@@ -47,11 +53,18 @@ function Exercise({ number, initialData }) {
         </option>
         <option value="weightsAndReps">Weights and Reps</option>
         <option value="duration">Duration</option>
+        <option value="bodyWeight">Bodyweight</option>
+        <option value="assisted">Assisted-Exercise</option>
       </select>
       <br />
       {/* all sets come from the array now, each gets its data passed as initialData */}
       {sets.map((set, index) => (
-        <Sets key={set.id} num={index + 1} exerciseType={exerciseType} initialData={set} />
+        <Sets
+          key={set.id}
+          num={index + 1}
+          exerciseType={exerciseType}
+          initialData={set}
+        />
       ))}
       <br />
       {/* this is the button to add a new set */}

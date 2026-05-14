@@ -42,7 +42,7 @@ function Day() {
   // function to remove the last exercise from the array
   function handleMinus() {
     if (exerciseArray.length > 0) {
-      const updatedExercises = exerciseArray.slice(0, -1); //0th to last element but the lst element is excluded
+      const updatedExercises = exerciseArray.slice(0, -1); //0th to last element but the last element is excluded
       setExerciseArray(updatedExercises);
     }
   }
